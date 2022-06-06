@@ -1,15 +1,18 @@
 import { styled, Stack, Typography } from "@material-ui/core"
 
-const StyledInput = styled('input')(({style}) => ({
+const StyledInput = styled('input')(({style, disabled}) => ({
     ...style,
     outline: 'none',
-    border: '1px solid #F0B90B',
+    border: disabled ? '1px solid #555555' : '1px solid #F0B90B',
     backgroundColor: 'transparent',
     color: '#ffffff',
     fontSize: 15,
     borderRadius: 4,
     height: 40,
-    paddingLeft: 10 
+    paddingLeft: 10,
+    "&:disabled": {
+        cursor: 'not-allowed',
+    }
 }))
 
 export default function Input({ className, value, onChange, onClick, placeholder, style, label, labelStyle, wrapperStyle, disabled}) {

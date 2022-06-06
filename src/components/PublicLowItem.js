@@ -15,8 +15,7 @@ import {
   CardActions,
   Link
 } from '@material-ui/core';
-import { AwesomeButton } from 'react-awesome-button';
-import CardButton from './CardButton';
+import { Chain2Icon } from 'src/network2label/networkLabel';
 
 // ----------------------------------------------------------------------
 
@@ -40,72 +39,83 @@ const CardWrapper = styled('div')(({ background }) => ({
   paddingTop: 15,
   paddingBottom: 15,
   "&:hover": {
-    background: `url(${background})`,
+    backgroundImage: `url(${background})`,
     backgroundSize: '100%',
     backgroundPosition: 'center center',
   }
 }))
+
+const DisabledCover = styled('div')(() => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  background: 'rgb(255, 255, 255, 0.1)',
+  zIndex: 99,
+  cursor: 'not-allowed'
+}))
 // ----------------------------------------------------------------------
 
-export default function PublicLowItem({ avatar, name, bio, description, twitter, telegram }) {
-  const [expanded, setExpanded] = useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+export default function PublicLowItem({ id, tokenLogo, projectName, disabled = false, cryptoStakings, lpFarms, tokenSymbol, telegram, twitter, website, chain }) {
 
   return (
     <Card
       sx={{
+        position: 'relative',
         borderRadius: '6px',
-        border: '1px solid yellow',
+        border: !disabled ? '1px solid #F0B90B' : '1px solid #555555',
         boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px',
       }}
     >
+      {disabled ? <DisabledCover /> : <></>}
       <RouterLink to='/project' style={{ width: '100%', textDecoration: 'none', decorationColor: '#ffffff', color: '#ffffff' }}>
-        <CardWrapper background={avatar}>
+        <CardWrapper>
           <CardContent>
             <Stack direction="row" sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Stack direction="row">
                 <Typography variant="h4" color="grey.200" sx={{ mx: "auto", height: 40 }}>
                   Token:&nbsp;
                 </Typography>
+                <Typography variant="h4" color="grey.200" sx={{ mx: "auto", height: 40 }}>
+                  {tokenSymbol}&nbsp;
+                </Typography>
                 <Box
                   component="img"
-                  src="/images/meta-reflect.png"
+                  src={`data:image/png;base64, ${tokenLogo}`}
+                  alt="logo"
+                  sx={{ mx: "auto", width: 40, height: 40, borderRadius: 50, border: '2px solid #F0B90B' }}
+                />
+              </Stack>
+              <Stack direction="row">
+                <Typography variant="h4" color="grey.200" sx={{ mx: "auto", height: 40 }}>
+                  Network:&nbsp;
+                </Typography>
+                <Box
+                  component="img"
+                  src={Chain2Icon[chain]}
                   alt="logo"
                   sx={{ mx: "auto", width: 40, height: 40 }}
                 />
               </Stack>
               <Stack direction="row">
-                <Typography variant="h4" color="grey.200" sx={{ mx: "auto", height: 40 }}>
-                  Token:&nbsp;
-                </Typography>
-                <Box
-                  component="img"
-                  src="/images/binance.png"
-                  alt="logo"
-                  sx={{ mx: "auto", width: 40, height: 40 }}
-                />
-              </Stack>
-              <Stack direction="row">
                 <Typography variant='h4' sx={{ fontSize: 25 }}>
-                  APR: 300%
+                  Staking: {cryptoStakings ? cryptoStakings : 0}
                 </Typography>
               </Stack>
               <Stack direction="row">
                 <Typography variant='h4' sx={{ fontSize: 25 }}>
-                  Time Left: 4 days
+                  Farm: {lpFarms ? lpFarms : 0}
                 </Typography>
               </Stack>
               <Stack direction="row">
                 <Typography variant='h4' sx={{ fontSize: 25 }}>
-                  Staking Type: LP Farm
+                  Project:
                 </Typography>
               </Stack>
               <Stack direction="row">
                 <Typography variant="h4" color="grey.200" sx={{ mx: "auto", height: 40 }}>
-                  Project: {name}
+                  {projectName}
                 </Typography>
               </Stack>
             </Stack>

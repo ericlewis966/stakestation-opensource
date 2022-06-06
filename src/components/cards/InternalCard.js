@@ -16,7 +16,7 @@ import {
     Link
 } from '@material-ui/core';
 // import { AwesomeButton } from 'react-awesome-button';
-import CardButton from './CardButton';
+import CardButton from 'src/components/CardButton';
 
 // ----------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ const ExpandMore = styled((props) => {
 
 // ----------------------------------------------------------------------
 
-export default function InternalCard({ networkLogo, stakingToken, rewardToken, name, bio, description, twitter, telegram, category }) {
+export default function InternalCard({ stakeTokenInfo, rewardTokenInfo, dividendTokenInfo, stakingToken, rewardToken, name, bio, description, twitter, telegram, category }) {
     const [expanded, setExpanded] = useState(false);
 
     const handleExpandClick = () => {
@@ -53,7 +53,7 @@ export default function InternalCard({ networkLogo, stakingToken, rewardToken, n
                         Stake:
                     </Typography>
                     <Typography variant='h4' sx={{ fontSize: 25, color: '#F0B90B' }}>
-                        MRF
+                        {stakeTokenInfo?.symbol ? stakeTokenInfo?.symbol : "???"}
                     </Typography>
                 </Container>
                 <Container maxWidth="lg" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", }} >
@@ -61,7 +61,7 @@ export default function InternalCard({ networkLogo, stakingToken, rewardToken, n
                         Reward:
                     </Typography>
                     <Typography variant='h4' sx={{ fontSize: 25, color: '#F0B90B' }}>
-                        MRF
+                        {rewardTokenInfo?.symbol ? rewardTokenInfo?.symbol : "???"}
                     </Typography>
                 </Container>
                 <Container maxWidth="lg" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", }} >
@@ -69,7 +69,7 @@ export default function InternalCard({ networkLogo, stakingToken, rewardToken, n
                         Reflection:
                     </Typography>
                     <Typography variant='h4' sx={{ fontSize: 25, color: '#F0B90B' }}>
-                        BUSD
+                        { dividendTokenInfo?.symbol ? dividendTokenInfo?.symbol : "???" }
                     </Typography>
                 </Container>
             </CardContent>

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useGlobalContext } from 'src/contexts/GlobalContext';
+import { Chain2Icon, Chain2Name, Chain2RPC_URL } from '../network2label/networkLabel';
 
 import {
     Box,
@@ -8,27 +10,26 @@ import {
     Stack
 } from "@material-ui/core";
 
+import SetNetwork from './SetNetwork';
+import CardButton from './CardButton';
 
-const BoxStyle = {
-    transition: '0.3s',
-    cursor: 'pointer',
-    borderRadius: 1,
-    '&: hover': {
-        backgroundColor: '#F0B90B'
-    }
-}
 
-export default function NetworkSelect({ label, labelStyle, style }) {
+export default function NetworkSelect({ label, labelStyle, style, wrapperStyle }) {
+
+    const [showNetworkSetting, setShowNetworkSetting] = useState(false);
+
+    const { state, update } = useGlobalContext();
+
     return (
-        <Stack direction="column">
-            <Typography variant='p' sx={labelStyle}>{label}</Typography>
-            <Stack direction="row" sx={{borderBottom: '1px solid #F0B90B', width: 200, height: 40, justifyContent: 'space-between', ...style}}>
-                <Box component="img" src="images/binance.png" sx={{ width: 35, ...BoxStyle}} />
-                <Box component="img" src="images/ethereum.png" sx={{ width: 35, ...BoxStyle}} />
-                <Box component="img" src="images/polygon.png" sx={{ width: 35, ...BoxStyle}} />
-                <Box component="img" src="images/cronos.png" sx={{ width: 35, ...BoxStyle}} />
-                <Box component="img" src="images/avalanche.png" sx={{ width: 35, ...BoxStyle}} />
+        <>
+            <Stack direction="column" sx={wrapperStyle}>
+                <Typography variant="p" style={labelStyle}>{label}</Typography>
+                <CardButton style={{fontSize: 20, height: 40, ...style }} onClick={() => setShowNetworkSetting(true)}>
+                    <Box component="img" src={Chain2Icon[state.selectedChain]} sx={{ display: 'flex', width: 25, marginRight: 1 }} />
+                    {Chain2Name[state.selectedChain]}
+                </CardButton>
             </Stack>
-        </Stack>
+            <SetNetwork open={showNetworkSetting} onClose={() => setShowNetworkSetting(false)} />
+        </>
     )
 }

@@ -51,37 +51,43 @@ const SetNetwork = ({ open, onClose }) => {
                 </Container>
                 <Container direction="row" sx={{ display: 'flex', justifyContent: 'center' }}>
                     <CardButton style={buttonStyled} onClick={() => setChain(56)} >
-                        <Box component="img" src="images/binance.png" sx={{ width: 30, marginRight: 2 }} />
+                        <Box component="img" src="/images/binance.png" sx={{ width: 30, marginRight: 2 }} />
                         Binance Smart Chain
                     </CardButton>
                 </Container>
                 <Container direction="row" sx={{ display: 'flex', justifyContent: 'center' }}>
                     <CardButton style={buttonStyled} onClick={() => setChain(97)} >
-                        <Box component="img" src="images/binance.png" sx={{ width: 30, marginRight: 2 }} />
+                        <Box component="img" src="/images/binance.png" sx={{ width: 30, marginRight: 2 }} />
                         BSC Testnet
                     </CardButton>
                 </Container>
                 <Container direction="row" sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <CardButton style={buttonStyled} onClick={() => setChain(31337)} >
+                        <Box component="img" src="/images/hardhat.svg" sx={{ width: 30, marginRight: 2 }} />
+                        Hardhat Local
+                    </CardButton>
+                </Container>
+                <Container direction="row" sx={{ display: 'flex', justifyContent: 'center' }}>
                     <CardButton style={buttonStyled} onClick={() => setChain(1)} >
-                        <Box component="img" src="images/ethereum.png" sx={{ width: 30, marginRight: 2 }} />
+                        <Box component="img" src="/images/ethereum.png" sx={{ width: 30, marginRight: 2 }} />
                         Ethereum Network
                     </CardButton>
                 </Container>
                 <Container direction="row" sx={{ display: 'flex', justifyContent: 'center' }}>
                     <CardButton style={buttonStyled} onClick={() => setChain(137)} >
-                        <Box component="img" src="images/polygon.png" sx={{ width: 30, marginRight: 2 }} />
+                        <Box component="img" src="/images/polygon.png" sx={{ width: 30, marginRight: 2 }} />
                         Polygon Network
                     </CardButton>
                 </Container>
                 <Container direction="row" sx={{ display: 'flex', justifyContent: 'center' }}>
                     <CardButton style={buttonStyled} onClick={() => setChain(25)} >
-                        <Box component="img" src="images/cronos.png" sx={{ width: 30, marginRight: 2 }} />
+                        <Box component="img" src="/images/cronos.png" sx={{ width: 30, marginRight: 2 }} />
                         Cronos Network
                     </CardButton>
                 </Container>
                 <Container direction="row" sx={{ display: 'flex', justifyContent: 'center' }}>
                     <CardButton style={buttonStyled} onClick={() => setChain(43114)} >
-                        <Box component="img" src="images/avalanche.png" sx={{ width: 30, marginRight: 2 }} />
+                        <Box component="img" src="/images/avalanche.png" sx={{ width: 30, marginRight: 2 }} />
                         Avalanche Network
                     </CardButton>
                 </Container>

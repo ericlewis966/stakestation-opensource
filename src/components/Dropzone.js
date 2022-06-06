@@ -1,6 +1,9 @@
 import React, { useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Container, Stack, Typography, styled } from '@material-ui/core';
+import { loadingButtonClasses } from '@material-ui/lab';
+import { Login, Password } from '@material-ui/icons';
+import { Address } from 'src/constants';
 
 const baseStyle = {
     flex: 1,
@@ -35,7 +38,7 @@ const Input = styled('input')(() => ({
 
 }))
 
-export default function StyledDropzone({contentText, sx, label, labelStyle}) {
+export default function StyledDropzone({contentText, sx, label, labelStyle, onChange}) {
     const {
         getRootProps,
         getInputProps,
@@ -61,7 +64,7 @@ export default function StyledDropzone({contentText, sx, label, labelStyle}) {
             <Typography variant="p">{label}</Typography>
             <Container sx={{backgroundColor: 'transparent'}}>
             <Stack {...getRootProps({ style })} sx={{backgroundColor: 'transparent'}} direction="column">
-                <Input {...getInputProps()} />
+                <Input {...getInputProps()} onChange={onChange} />
                 <Typography variant="p">{contentText}</Typography>
             </Stack>
         </Container>

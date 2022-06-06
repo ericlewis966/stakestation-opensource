@@ -23,6 +23,9 @@ const SelectBox = styled('select')(({style}) => ({
         color: 'yellow',
         background: 'transparent',
         backgroundColor: 'transparent'
+    },
+    "&:disabled": {
+        cursor: 'not-allowed'
     }
 }))
 

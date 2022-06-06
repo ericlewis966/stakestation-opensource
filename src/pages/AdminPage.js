@@ -2,7 +2,7 @@
 import { styled } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 // components
-import { AdminForm } from '../components/_external-pages/landing';
+import { AdminForm, AdminDashboard } from '../components/_external-pages/admin';
 
 // ----------------------------------------------------------------------
 
@@ -17,11 +17,13 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function AdminPage() {
+export default function AdminPage({to}) {
   return (
     <RootStyle id="move_top">
       <ContentStyle>
-        <AdminForm />
+        {
+          to === 1 ? <AdminDashboard /> : <AdminForm />
+        }
       </ContentStyle>
     </RootStyle>
   );

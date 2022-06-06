@@ -18,12 +18,8 @@ import {
   Typography,
 } from "@material-ui/core";
 import { AwesomeButton } from "react-awesome-button";
-import { Icon } from "@iconify/react";
-import twitterIcon from "@iconify/icons-cib/twitter";
-import youtubeIcon from "@iconify/icons-cib/youtube";
 import { FaUnlink } from 'react-icons/fa';
 import { BiWalletAlt } from 'react-icons/bi';
-import walletIcon from "@material-ui/icons/AccountBalanceWallet"
 import CardButton from '../../components/CardButton';
 import SetNetwork from 'src/components/SetNetwork';
 // components
@@ -116,7 +112,7 @@ export default function MainNavbar() {
         if (chainId !== state.selectedChain) {
           console.log(chainId, state.selectedChain)
           try {
-            library.provider.request({
+            await library.provider.request({
               method: "wallet_switchEthereumChain",
               params: [{ chainId: toHex(state.selectedChain) }]
             });
@@ -237,7 +233,7 @@ export default function MainNavbar() {
                 }}
                   onClick={connectInjected}
                 >
-                  <Box component="img" src="images/Metamask-icon.png" sx={{ width: 35, marginRight: 2 }} />
+                  <Box component="img" src="/images/Metamask-icon.png" sx={{ width: 35, marginRight: 2 }} />
                   METAMASK
                 </CardButton>
               </Container>
@@ -255,7 +251,7 @@ export default function MainNavbar() {
                   }}
                   onClick={connectWalletConnect}
                 >
-                  <Box component="img" src="images/WalletConnect-icon.png" sx={{ width: 35, marginRight: 2 }} />
+                  <Box component="img" src="/images/WalletConnect-icon.png" sx={{ width: 35, marginRight: 2 }} />
                   WALLET CONNECT
                 </CardButton>
               </Container>

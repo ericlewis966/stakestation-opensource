@@ -13,26 +13,31 @@ import ScrollToTop from './components/ScrollToTop';
 import ThemePrimaryColor from './components/ThemePrimaryColor';
 //context
 import { GlobalContextProvider } from './contexts/GlobalContext';
+//redux
+import { Provider } from 'react-redux';
+import store from 'src/store';
 
 // ----------------------------------------------------------------------
 
 export default function App() {
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
-      <GlobalContextProvider>
-        <ThemeConfig>
-          <ThemePrimaryColor>
-            <ToastProvider
-              autoDismiss
-              autoDismissTimeout={6000}
-              placement="bottom-center"
-            >
-              <ScrollToTop />
-              <Router />
-            </ToastProvider>
-          </ThemePrimaryColor>
-        </ThemeConfig>
-      </GlobalContextProvider>
+      <Provider store={store}>
+        <GlobalContextProvider>
+          <ThemeConfig>
+            <ThemePrimaryColor>
+              <ToastProvider
+                autoDismiss
+                autoDismissTimeout={6000}
+                placement="bottom-center"
+              >
+                <ScrollToTop />
+                <Router />
+              </ToastProvider>
+            </ThemePrimaryColor>
+          </ThemeConfig>
+        </GlobalContextProvider>
+      </Provider>
     </Web3ReactProvider>
   );
 }

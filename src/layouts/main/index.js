@@ -47,10 +47,10 @@ export default function MainLayout() {
           </Typography>
         </ScrollLink>
         <Stack direction="row" spacing={1}>
-          <IconButton href="https://t.me/SoldiersOfSolana" target="_blank">
+          <IconButton href="https://t.me/" target="_blank">
             <Icon icon={telegramIcon} />
           </IconButton>
-          <IconButton href=" https://discord.gg/soldiers" target="_blank">
+          <IconButton href=" https://discord.gg/" target="_blank">
             <Icon icon={discordIcon} />
           </IconButton>
         </Stack>
